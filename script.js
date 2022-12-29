@@ -15,7 +15,7 @@
         }
      }
     } 
-    console.log(packArr)
+    // console.log(packArr)
     console.log(packObj)
 
     // write your code here
