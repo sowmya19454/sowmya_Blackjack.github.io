@@ -8,15 +8,15 @@
     const values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
     const packArr = []
     const packObj = {}
-    for (var i in suits){
-      for(var j in values){
-        packArr.push(values[j]+" of "+siuts[i])//added deck of cards
-        packObj[values[j]+" of "+suits[i]] = parseInt(j) +1 // added deck of cards in a object
-        //console.log(packArr)
-        //console.log(packObj)
-
-      }
-    }
+    for (var a in suits){
+        for(var s in values){
+          packArr.push(values[s]+" of "+suits[a])
+          packObj[values[s]+" of "+suits[a]] = parseInt(s) + 1
+        }
+     }
+    } 
+    console.log(packArr)
+    console.log(packObj)
 
     // write your code here
 
