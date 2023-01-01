@@ -182,10 +182,12 @@ function initialDeal() {
       card2.displayCard("card2", !1);
       playerCard1.displayCard("playerCard1", !0);
       playerCard2.displayCard("playerCard2", !0);
+       // Setting face card values to 10
       card1.value = 10 < card1.value ? 10 : card1.value;
       card2.value = 10 < card2.value ? 10 : card2.value;
       playerCard1.value = 10 < playerCard1.value ? 10 : playerCard1.value;
       playerCard2.value = 10 < playerCard2.value ? 10 : playerCard2.value;
+       // Getting player cards total - show an alert only if there is a Blackjack
       21 === (playerTotal = playerCard1.value + playerCard2.value) &&
         cuteAlert({
           type: "success",
@@ -194,37 +196,8 @@ function initialDeal() {
           buttonText: "Wohoo !!!",
           img: "success.svg",
         }).then(() => {
-          location.reload();
+          location.reload(); // Load a new game
         });
-    
-    // write your code here
-
-
-    // Open the board with 2 Dealer cards (one Dealer card is closed) and 2 Player cards (both open)
-
-    // write your code here
-
-
-    // Setting face card values to 10
-
-    // write your code here
-
-
-    // Getting player cards total - show an alert only if there is a Blackjack
-    /*
-    // Alert to show Blackjack
-        cuteAlert({
-            type: "success",
-            title: "Superb!!!",
-            message: "Blackjacked !!!",
-            buttonText: "Wohoo !!!",
-            img:"success.svg"
-        }).then(() => {
-            location.reload()  // Load a new game
-        })
-    */
-
-    // write your code here
 
 } //End of deal()
 
@@ -232,8 +205,10 @@ function initialDeal() {
  * If the Player stands with his cards - the Dealer has to flip his closed card and determine who wins the game
  */
 function stand() {
+     // flip Dealer cards and compare
     card2.flip();
   dealerTotal = card1.value + card2.value;
+  // Checking Dealer and Player score - to give the result using cuteAlerts (just like the alert in initialDeal function)
   (playerTotal >= dealerTotal
     ? cuteAlert({
         type: "success",
@@ -253,15 +228,6 @@ function stand() {
     location.reload();
   });
 
-    // flip Dealer cards and compare
-
-    // write your code here
-
-
-    // Checking Dealer and Player score - to give the result using cuteAlerts (just like the alert in initialDeal function)
-
-    // write your code here
-
 }
 
 // Variable to track the extra cards dealed
@@ -276,6 +242,8 @@ function hit() {
     // Dealing the extra cards that the player requests
     playerCard3 = new Card(deck.deal());
     playerCard4 = new Card(deck.deal());
+    // Dealing new cards 
+    // Use conditional block
     if (0 === extraCnt) {
       playerCard3.displayCard("playerCard3", true);
       playerCard3.value = 10 < playerCard3.value ? 10 : playerCard3.value;
@@ -285,7 +253,11 @@ function hit() {
       playerCard4.value = 10 < playerCard4.value ? 10 : playerCard4.value;
       playerTotal += playerCard4.value;
     } else {
-      e.style.display = "none";
+        asArray.style.display = "none";
+        // When 4 cards are dealed use the following code
+        // dealButton.style.display = 'none'
+        // Alert - Max. Cards dealed
+
       cuteAlert({
         type: "warning",
         title: "Sorry...",
@@ -305,7 +277,10 @@ function hit() {
         location.reload();
       });
       asArray.style.display = "none";
-    } else
+    } else  // Checking the total of the player cards before dealing new cards
+    // cuteAlert - Player looses the game - as score is more than 21
+    // cuteAlert - Player wins with BlackJack !!!
+
       21 === playerTotal &&
         cuteAlert({
           type: "success",
@@ -316,30 +291,6 @@ function hit() {
         }).then(() => {
           location.reload();
         });
-    // write your code here
-
-
-    // Dealing new cards 
-    // Use conditional block
-    /*
-    When 4 cards are dealed use the following code
-        dealButton.style.display = 'none'
-        // Alert - Max. Cards dealed
-        cuteAlert({
-            type: "warning",
-            title: "Sorry...",
-            message: "Max. Cards dealed",
-            buttonText: "OK",
-            img:"warning.svg"
-        })
-    */
-
-    // write your code here
-
-
-    // Checking the total of the player cards before dealing new cards
-        // cuteAlert - Player looses the game - as score is more than 21
-        // cuteAlert - Player wins with BlackJack !!!
 
 
     // Increment extra card count
